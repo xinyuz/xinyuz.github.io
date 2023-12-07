@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Git常用命令 | Xinyuz&#39; Blog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/assets/css/0.styles.e4d8b86b.css" as="style"><link rel="preload" href="/assets/js/app.12e02322.js" as="script"><link rel="preload" href="/assets/js/2.43068ffc.js" as="script"><link rel="preload" href="/assets/js/9.388c08c9.js" as="script"><link rel="prefetch" href="/assets/js/10.cf0a5ddb.js"><link rel="prefetch" href="/assets/js/11.07f51e5e.js"><link rel="prefetch" href="/assets/js/3.99710ee3.js"><link rel="prefetch" href="/assets/js/4.e79be9eb.js"><link rel="prefetch" href="/assets/js/5.ce6e19e1.js"><link rel="prefetch" href="/assets/js/6.4352fc9c.js"><link rel="prefetch" href="/assets/js/7.294a01bd.js"><link rel="prefetch" href="/assets/js/8.589edcf7.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e4d8b86b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Xinyuz' Blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="GitHub Pages with VuePress" class="dropdown-title"><span class="title">GitHub Pages with VuePress</span> <span class="arrow down"></span></button> <button type="button" aria-label="GitHub Pages with VuePress" class="mobile-dropdown-title"><span class="title">GitHub Pages with VuePress</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/deploy-github-pages-with-vuepress.html" class="nav-link">
+  用VuePress部署GitHub Pages
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="GitHub Pages with VuePress" class="dropdown-title"><span class="title">GitHub Pages with VuePress</span> <span class="arrow down"></span></button> <button type="button" aria-label="GitHub Pages with VuePress" class="mobile-dropdown-title"><span class="title">GitHub Pages with VuePress</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/deploy-github-pages-with-vuepress.html" class="nav-link">
+  用VuePress部署GitHub Pages
+</a></li></ul></div></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="git常用命令"><a href="#git常用命令" class="header-anchor">#</a> Git常用命令</h1> <h2 id="基础命令"><a href="#基础命令" class="header-anchor">#</a> 基础命令</h2> <h3 id="_1-在centos上安装git"><a href="#_1-在centos上安装git" class="header-anchor">#</a> 1. 在CentOS上安装git</h3> <div class="language-sh extra-class"><pre class="language-sh"><code>yum <span class="token function">install</span> <span class="token function">git</span>
+</code></pre></div><h3 id="_2-存储登录信息"><a href="#_2-存储登录信息" class="header-anchor">#</a> 2. 存储登录信息</h3> <p>如果希望系统记住git用户名和密码，不希望每次都输入验证权限。可以执行这个命令。</p> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> config --global credential.helper store
+</code></pre></div><h3 id="_3-使用代理访问git-host"><a href="#_3-使用代理访问git-host" class="header-anchor">#</a> 3. 使用代理访问Git Host</h3> <div class="language-sh extra-class"><pre class="language-sh"><code><span class="token function">git</span> config --global https.proxy http://127.0.0.1:1080
+
+<span class="token function">git</span> config --global https.proxy https://127.0.0.1:1080
+
+<span class="token function">git</span> config --global --unset http.proxy
+
+<span class="token function">git</span> config --global --unset https.proxy
+</code></pre></div><h3 id="_4-git删除远程已不存在的branch"><a href="#_4-git删除远程已不存在的branch" class="header-anchor">#</a> 4. Git删除远程已不存在的branch</h3> <p>使用过一段时间后，有时在远程已经删除的branch，在本地还可以通过branch -a查到，比如：</p> <div class="language-sh extra-class"><pre class="language-sh"><code>% <span class="token function">git</span> branch -a
+  dev
+  main
+* story/dajiang-1
+  remotes/origin/3
+  remotes/origin/HEAD -<span class="token operator">&gt;</span> origin/main
+  remotes/origin/dev
+  remotes/origin/issue1
+  remotes/origin/main
+  remotes/origin/story/dajiang-1
+</code></pre></div><p>其中的issue1其实就已经删除了。那么如何从本地也清理掉这些已经不存在远程的分支呢？</p> <div class="language-sh extra-class"><pre class="language-sh"><code>% <span class="token function">git</span> fetch -p
+来自 https://hello
+ - <span class="token punctuation">[</span>已删除<span class="token punctuation">]</span>          （无）  -<span class="token operator">&gt;</span> origin/issue1
+</code></pre></div><p>在查看git branch -a，就已经没有了</p> <div class="language-sh extra-class"><pre class="language-sh"><code>% <span class="token function">git</span> branch -a
+  dev
+  main
+* story/dajiang-1
+  remotes/origin/3
+  remotes/origin/HEAD -<span class="token operator">&gt;</span> origin/main
+  remotes/origin/dev
+  remotes/origin/main
+  remotes/origin/story/dajiang-1
+</code></pre></div><h3 id="_5-git如何修改repostry名称"><a href="#_5-git如何修改repostry名称" class="header-anchor">#</a> 5. Git如何修改repostry名称</h3> <p>在gitlab里，需要进入设置，通用里，修改项目名称。</p> <h3 id="_6-git-config-global-push-default-matching"><a href="#_6-git-config-global-push-default-matching" class="header-anchor">#</a> 6. git config --global push.default matching</h3></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.12e02322.js" defer></script><script src="/assets/js/2.43068ffc.js" defer></script><script src="/assets/js/9.388c08c9.js" defer></script>
+  </body>
+</html>
